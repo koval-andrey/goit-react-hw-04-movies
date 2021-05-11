@@ -1,8 +1,10 @@
-import styles from './Layout.module.css';
-import AppBar from '../appBar';
+import styles from "./Layout.module.css";
+import AppBar from "../appBar";
 
-const Layout = ({ children }) => <div className={styles.layout}>
-    <AppBar/>
+const Layout = ({ children }) => (
+  <div className={styles.layout}>
+    <AppBar />
     {children}
-</div>
+  </div>
+);
 export default Layout;

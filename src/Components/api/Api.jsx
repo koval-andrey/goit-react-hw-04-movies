@@ -1,12 +1,12 @@
-import axios from 'axios';
+import axios from "axios";
 
-const BASE_URL = 'https://api.themoviedb.org/3/';
-const API_KEY = '93ac0ae6a73612e6a2ab4e7e2dd58893';
+const BASE_URL = "https://api.themoviedb.org/3/";
+const API_KEY = "93ac0ae6a73612e6a2ab4e7e2dd58893";
 
 axios.defaults.baseURL = BASE_URL;
 axios.defaults.params = {
   api_key: API_KEY,
-  language: 'en-US',
+  language: "en-US",
 };
 
 const fetchTrendingMovies = async () => {
@@ -18,7 +18,7 @@ const fetchTrendingMovies = async () => {
     const { data } = await axios(config);
     return data.results;
   } catch (error) {
-    new Error('No response from server');
+    new Error("No response from server");
   }
 };
 
@@ -31,7 +31,7 @@ async function fetchMovieDetails(movie_id) {
     const { data } = await axios(config, movie_id);
     return data;
   } catch (error) {
-    new Error('No response from server');
+    new Error("No response from server");
   }
 }
 
@@ -44,7 +44,7 @@ async function fetchMovieCast(movie_id) {
     const { data } = await axios(config, movie_id);
     return data.cast;
   } catch (error) {
-    new Error('No response from server');
+    new Error("No response from server");
   }
 }
 
@@ -57,7 +57,7 @@ async function fetchMovieReviews(movie_id) {
     const { data } = await axios(config, movie_id);
     return data.results;
   } catch (error) {
-    new Error('No response from server');
+    new Error("No response from server");
   }
 }
 
@@ -73,7 +73,7 @@ async function fetchMoviesByQuery(query) {
     const { data } = await axios(config);
     return data.results;
   } catch (error) {
-    new Error('No response from server');
+    new Error("No response from server");
   }
 }
 
