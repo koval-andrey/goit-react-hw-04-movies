@@ -1,29 +1,27 @@
-import React, { Component } from "react";
-import Api from "../Components/api/Api";
-import Cast from "../views/Cast";
-import routes from "../routes";
-import { Link, Route } from "react-router-dom";
-import Reviews from "../views/Reviews";
-import Loader from "react-loader-spinner";
+import React, { Component } from 'react';
+import Api from '../Components/api/Api';
+import Cast from '../views/Cast';
+import routes from '../routes';
+import { Link, Route } from 'react-router-dom';
+import Reviews from '../views/Reviews';
+import Loader from 'react-loader-spinner';
 
 export default class MovieDetails extends Component {
   state = {
     movie: null,
-    status: "resolved",
+    status: 'resolved',
   };
 
   componentDidMount() {
     this.setState({
-      status: "pending",
+      status: 'pending',
     });
-    Api
-      .fetchShowMoviesDetails(this.props.match.params.movieId)
-      .then((movie) =>
-        this.setState({
-          movie,
-          status: "resolved",
-        })
-      );
+    Api.fetchShowMoviesDetails(this.props.match.params.movieId).then(movie =>
+      this.setState({
+        movie,
+        status: 'resolved',
+      }),
+    );
   }
 
   handleGoBack = () => {
@@ -54,7 +52,7 @@ export default class MovieDetails extends Component {
             <p>{movie.overview}</p>
             <h3>Genres</h3>
             <p>
-              {movie.genres.map((genre) => (
+              {movie.genres.map(genre => (
                 <li key={genre.id}>{genre.name}</li>
               ))}
             </p>
@@ -75,7 +73,7 @@ export default class MovieDetails extends Component {
           path={`${routes.movieDetails}${routes.reviews}`}
           component={Reviews}
         />
-        {status === "pending" && (
+        {status === 'pending' && (
           <Loader type="Circles" color="#00BFFF" height={100} width={100} />
         )}
       </>

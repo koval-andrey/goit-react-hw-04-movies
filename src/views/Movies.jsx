@@ -1,22 +1,19 @@
-import Loader from "react-loader-spinner";
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Api from "../Components/api/Api.jsx";
-import Searchbox from "../Components/SearchBox";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+import Loader from 'react-loader-spinner';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Api from '../Components/api/Api';
+import Searchbox from '../Components/SearchBox';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import getQueryParams from '../Components/QueryParams';
 
 export default class Movies extends Component {
   state = {
     movies: [],
-    searchMovie: "",
-    status: "idle",
-    error: "not found",
+    searchMovie: '',
+    status: 'idle',
+    error: 'not found',
   };
-  getQueryParams(string) {
-    return queryString.parse(string);
-  }
 
   componentDidMount() {
     const { query } = getQueryParams(this.props.location.search);
@@ -24,10 +21,9 @@ export default class Movies extends Component {
       this.fetchMovies(query);
       return;
     }
-    this.fetchMovies("batman");
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     const { query: prevQuery } = getQueryParams(prevProps.location.search);
     const { query: nextQuery } = getQueryParams(this.props.location.search);
     if (prevQuery !== nextQuery) {
@@ -35,30 +31,29 @@ export default class Movies extends Component {
     }
   }
 
-  fetchMovies = (query) => {
+  fetchMovies = query => {
     this.setState({
-      status: "pending",
+      status: 'pending',
     });
-    Api
-      .fetchMovieWithQuery(query)
-      .then((response) => {
+    Api.fetchMovieWithQuery(query)
+      .then(response => {
         if (response.total_pages === 0) {
           this.setState({
             movies: [],
-            status: "reject",
+            status: 'reject',
           });
           return Promise.reject(new Error(`This ${query} not found`));
         }
 
         this.setState({
           movies: response.results,
-          status: "resolved",
+          status: 'resolved',
         });
       })
-      .catch((error) => this.setState({ error, status: "rejected" }));
+      .catch(error => this.setState({ error, status: 'rejected' }));
   };
 
-  handleChangeQuery = (query) => {
+  handleChangeQuery = query => {
     this.props.history.push({
       pathname: this.props.location.pathname,
       search: `query=${query}`,
@@ -74,7 +69,7 @@ export default class Movies extends Component {
         <Searchbox onSubmit={this.handleChangeQuery} />
         <ToastContainer autoClose={3000} position="top-center" />
         <ul>
-          {movies.map((movie) => (
+          {movies.map(movie => (
             <li key={movie.id}>
               <Link
                 to={{
@@ -87,8 +82,8 @@ export default class Movies extends Component {
             </li>
           ))}
         </ul>
-        {status === "rejected" && <p>{error.message}</p>}
-        {status === "pending" && (
+        {status === 'rejected' && <p>{error.message}</p>}
+        {status === 'pending' && (
           <Loader type="Circles" color="#00BFFF" height={100} width={100} />
         )}
       </>

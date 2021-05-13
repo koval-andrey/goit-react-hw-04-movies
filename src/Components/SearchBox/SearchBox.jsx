@@ -1,11 +1,11 @@
 import { toast } from "react-toastify";
+
 import { Component } from "react";
 
-export default class Searchbox extends Component {
+export default class SearchBox extends Component {
   state = {
     value: "",
   };
-
   handleNameChange = (event) => {
     this.setState({
       value: event.currentTarget.value.toLowerCase(),

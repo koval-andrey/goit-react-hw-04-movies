@@ -1,8 +1,8 @@
-import FavoriteList from "../Components/FavoriteList";
+import TrendingList from '../Components/TrendingList';
 
 const Home = () => (
   <div>
-    <FavoriteList />
+    <TrendingList />
   </div>
 );
 

@@ -1,0 +1,14 @@
+.navigationList {
+    display: flex;
+    list-style: none;
+}
+
+.navigationLink {
+    color: rgb(0, 46, 114);
+    margin-right: 10px;
+    text-decoration: none;
+}
+
+.navigationLinkActive {
+    color: rgb(72, 255, 0);
+}

@@ -1,8 +1,8 @@
 import styles from "./Navigation.module.css";
 import { NavLink } from "react-router-dom";
-import routes from "routes";
+import routes from "../../routes";
 
-const Navifation = () => (
+const Navigation = () => (
   <ul className={styles.navigationList}>
     <li>
       <NavLink
@@ -26,4 +26,4 @@ const Navifation = () => (
   </ul>
 );
 
-export default Navifation;
+export default Navigation;

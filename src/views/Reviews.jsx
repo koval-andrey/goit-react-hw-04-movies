@@ -8,11 +8,11 @@ export default class Reviews extends Component {
     status: "resolved",
   };
 
-  componentDidMount() {
+  componentDidMount=()=> {
     this.setState({
       status: "pending",
     });
-    Api.fetchtReviewsMovie(this.props.match.params.movieId).then((response) =>
+    Api.fetchReviewsMovie(this.props.match.params.movieId).then((response) =>
       this.setState({
         reviews: response.results,
         status: "resolved",

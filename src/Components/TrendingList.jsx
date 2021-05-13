@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Api from "./api/Api.jsx";
 import { Link } from "react-router-dom";
-import routes from "routes";
+import routes from "../routes";
 import Loader from "react-loader-spinner";
 
-export default class FavoriteList extends Component {
+export default class TrendingList extends Component {
   state = {
     movies: [],
     status: "resolved",
@@ -14,7 +14,7 @@ export default class FavoriteList extends Component {
     this.setState({
       status: "pending",
     });
-    Api.fetchtFavoriteMovie().then((response) =>
+    Api.fetchTrendingMovie().then((response) =>
       this.setState({
         movies: response.results,
         status: "resolved",

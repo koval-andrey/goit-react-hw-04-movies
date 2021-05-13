@@ -12,14 +12,13 @@ export default class Cast extends Component {
     this.setState({
       status: "pending",
     });
-    Api
-      .fetchtCastMovie(this.props.match.params.movieId)
+    Api.fetchCastMovie(this.props.match.params.movieId)
       .then((response) =>
-        this.setState({
-          cast: response.cast,
-          status: "resolved",
-        })
-      );
+      this.setState({
+        cast: response.cast,
+        status: "resolved",
+      })
+    );
   }
   render() {
     const { status, cast } = this.state;
