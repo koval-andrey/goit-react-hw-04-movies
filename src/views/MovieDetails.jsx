@@ -25,11 +25,12 @@ export default class MovieDetails extends Component {
   }
 
   handleGoBack = () => {
-    const { state } = this.props.location;
-    if (state && state.from) {
-      this.props.history.push(state.from);
-    }
-    this.props.history.push(routes.movies);
+    const { location, state } = this.props.location;
+    //if (state && state.from) {
+    //  this.props.history.push(state.from);
+   // }
+   // this.props.history.push(routes.movies);
+    history.push(location?.state?.from || routes.movies)
   };
 
   render() {
