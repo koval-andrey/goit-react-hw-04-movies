@@ -1,6 +1,6 @@
 import Loader from 'react-loader-spinner';
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import Api from '../Components/api/Api';
 import Searchbox from '../Components/SearchBox';
 import { ToastContainer } from 'react-toastify';
